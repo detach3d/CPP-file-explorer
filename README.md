@@ -1,4 +1,4 @@
-### **README - C++ File Searcher**  
+### **C++ File Searcher**  
 
 #### **Overview**  
 This is a simple **File Searcher** written in **C++**, allowing users to navigate directories, view files, and perform basic file operations.  
