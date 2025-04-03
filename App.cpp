@@ -11,7 +11,7 @@ wxIMPLEMENT_APP(App);
 
 bool App::OnInit() {
     //file_explorer f;
-    MainFrame* mainFrame = new MainFrame("C++ GUI");
+    MainFrame* mainFrame = new MainFrame("File Searcher");
     mainFrame->SetClientSize(wxSize(550, 600));
     mainFrame->Center();
     mainFrame->Show();
