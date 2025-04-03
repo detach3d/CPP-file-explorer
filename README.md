@@ -15,3 +15,4 @@ Run the executable and follow the on-screen prompts to explore files and directo
 - wxWidgets
 
 #### **GUI**
+<img width="546" alt="image" src="https://github.com/user-attachments/assets/21676ef5-2c43-4bfc-8882-5c00d40e64cb" />
