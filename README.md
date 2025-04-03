@@ -12,3 +12,6 @@ Run the executable and follow the on-screen prompts to explore files and directo
 #### **Requirements**  
 - C++17 or later  
 - Standard C++ libraries (filesystem, iostream)  
+- wxWidgets
+
+#### **GUI**
