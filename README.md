@@ -1,4 +1,4 @@
-<img width="547" alt="image" src="https://github.com/user-attachments/assets/3289c0f7-e99f-4966-acde-00064b8c2de0" />### **C++ File Searcher**  
+### **C++ File Searcher**  
 
 #### **Overview**  
 This is a simple **File Searcher** written in **C++**, allowing users to search directories and files.  
