@@ -32,11 +32,9 @@ int file_explorer::file_explore(const fs::path &directory) {
             return 1;
         }
     }
-    if (!allFiles.empty()) {
-        return 2;
-    }
 
-    return 3;
+
+    return 2;
 }
 
 std::vector<std::string> file_explorer::getDirectoryFiles(const fs::path &directory) {
