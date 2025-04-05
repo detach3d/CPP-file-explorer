@@ -8,7 +8,7 @@
 
 namespace fs = std::filesystem;
 
-bool file_explorer::file_explore(const fs::path &directory) {
+int file_explorer::file_explore(const fs::path &directory) {
     allFiles.clear();
     try {
         allFiles = getDirectoryFiles(directory);
@@ -19,22 +19,24 @@ bool file_explorer::file_explore(const fs::path &directory) {
         if (str.find("No such file or directory") != std::string::npos) {
             //std::cout << e.what() << std::endl;
             std::set_terminate(nullptr);
-            allFiles.emplace_back("Not found");
-            return true;
+            allFiles.clear();
+            allFiles.emplace_back("Directory not found");
+            return 1;
         }
         if (str.find("Operation not permitted") != std::string::npos ||
             str.find("Permission denied") != std::string::npos) {
             //std::cout << e.what() << std::endl;
             std::set_terminate(nullptr);
+            allFiles.clear();
             allFiles.emplace_back("Permission denied");
-            return true;
+            return 1;
         }
     }
     if (!allFiles.empty()) {
-        return true;
+        return 2;
     }
 
-    return false;
+    return 3;
 }
 
 std::vector<std::string> file_explorer::getDirectoryFiles(const fs::path &directory) {
@@ -49,7 +51,7 @@ std::vector<std::string> file_explorer::getDirectoryFiles(const fs::path &direct
 }
 
 std::vector<std::string> file_explorer::findFiles(const std::string &str_to_find) {
-    std::vector<std::string> findedFiles{allFiles};
+    std::vector<std::string> findedFiles{};
     for (const auto &file: allFiles) {
         if (file.find(str_to_find) != std::string::npos) {
             findedFiles.push_back(file);
