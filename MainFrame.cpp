@@ -34,12 +34,23 @@ void MainFrame::OnClicked(wxCommandEvent &event) {
     const std::string str = textCtrl_1->GetValue().ToStdString();
     file_explorer explorer;
 
-    explorer.file_explore(textCtrl_2->GetValue().ToStdString());
-
-    const auto& vec = file_explorer::findFiles(str);
-    for (auto &it: vec) {
-        //std::cout << it << std::endl;
-        listCtrl->AppendString(it);
+    int b = explorer.file_explore(textCtrl_2->GetValue().ToStdString());
+    if (b == 1) {
+        for (auto &it: allFiles) {
+            //std::cout << it << std::endl;
+            listCtrl->AppendString(it);
+            event.Skip();
+        }
+    }else if (b==3) {
+        const auto& vec = file_explorer::findFiles(str);
+        for (auto &it: vec) {
+            //std::cout << it << std::endl;
+            listCtrl->AppendString(it);
+        }
+    }else {
+        listCtrl->AppendString("No such file or directory");
     }
+
+
     event.Skip();
 }
