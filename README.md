@@ -8,7 +8,7 @@ This is a simple **File Searcher** written in **C++**, allowing users to search 
 
 #### **Requirements**  
 - C++17 or later  
-- Standard C++ libraries (filesystem, iostream)  
+- Standard C++ libraries (filesystem, exception)  
 - wxWidgets
 
 #### **GUI**
