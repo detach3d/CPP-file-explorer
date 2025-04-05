@@ -27,13 +27,15 @@ MainFrame::MainFrame(const wxString &title) : wxFrame(nullptr, wxID_ANY, title) 
     textCtrl_2 = new wxTextCtrl(panel, wxID_ANY, "", wxPoint(300, 50), wxSize(200, -1));
 
     listCtrl = new wxListBox(panel, wxID_ANY, wxPoint(50, 150), wxSize(450, 400));
+
+    CreateStatusBar();
 }
 
 void MainFrame::OnClicked(wxCommandEvent &event) {
     listCtrl->Clear();
     const std::string str = textCtrl_1->GetValue().ToStdString();
     file_explorer explorer;
-
+    wxLogStatus("Searching for: %s in %s", str.c_str(), textCtrl_2->GetValue().ToStdString());
     int b = explorer.file_explore(textCtrl_2->GetValue().ToStdString());
     if (b == 1) {
         for (auto &it: allFiles) {
@@ -41,16 +43,16 @@ void MainFrame::OnClicked(wxCommandEvent &event) {
             listCtrl->AppendString(it);
             event.Skip();
         }
-    }else if (b==3) {
-        const auto& vec = file_explorer::findFiles(str);
+    } else if (b == 2) {
+        const auto &vec = file_explorer::findFiles(str);
+        if (vec.size() == 0) {
+            listCtrl->AppendString("No such file or directory");
+            event.Skip();
+        }
         for (auto &it: vec) {
             //std::cout << it << std::endl;
             listCtrl->AppendString(it);
         }
-    }else {
-        listCtrl->AppendString("No such file or directory");
     }
-
-
     event.Skip();
 }
